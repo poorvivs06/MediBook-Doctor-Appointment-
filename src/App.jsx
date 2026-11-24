@@ -197,6 +197,17 @@ function Home() {
             </span>
           </div>
 
+          <div className="hero-trust-pill">
+            <span className="live-pulse-dot"></span>
+            <span>
+              {language === "kn"
+                ? "● 6+ ಪರಿಣಿತ ವೈದ್ಯರು ಲಭ್ಯ • 24/7 ತುರ್ತು ಆರೈಕೆ"
+                : language === "hi"
+                ? "● 6+ प्रमाणित डॉक्टर ऑनलाइन • 24/7 आपातकालीन सेवा"
+                : "● 6+ Board-Certified Doctors Active • 24/7 Virtual OPD"}
+            </span>
+          </div>
+
           <p className="small-title">{t("healthPriority")}</p>
 
           <h1>
@@ -207,8 +218,9 @@ function Home() {
 
           <p className="hero-text">{t("heroSub")}</p>
 
-          {/* Working Search Bar (supports Enter key and click) */}
+          {/* Working Search Bar with Quick Tags */}
           <form onSubmit={handleHeroSearch} className="search-box">
+            <span className="search-input-icon">🔍</span>
             <input
               type="text"
               value={searchQuery}
@@ -217,6 +229,50 @@ function Home() {
             />
             <button type="submit">{t("searchBtn")}</button>
           </form>
+
+          {/* Quick Specialty Filter Chips */}
+          <div className="hero-quick-filters">
+            <span className="quick-filter-label">
+              {language === "kn" ? "ಜನಪ್ರಿಯ:" : language === "hi" ? "लोकप्रिय:" : "Popular:"}
+            </span>
+            <Link to="/doctors?specialty=Cardiology" className="quick-filter-tag">
+              ❤️ {t("specialtyCardiology")}
+            </Link>
+            <Link to="/doctors?specialty=Dermatology" className="quick-filter-tag">
+              🧴 {t("specialtyDermatology")}
+            </Link>
+            <Link to="/doctors?specialty=Pediatrics" className="quick-filter-tag">
+              👶 {t("specialtyPediatrics")}
+            </Link>
+            <Link to="/doctors?specialty=Neurology" className="quick-filter-tag">
+              🧠 {t("specialtyNeurology")}
+            </Link>
+          </div>
+
+          {/* Trust Proof Points Row */}
+          <div className="hero-proof-row">
+            <div className="proof-item">
+              <span className="proof-icon">⚡</span>
+              <div>
+                <strong>&lt; 30s</strong>
+                <span>{t("instantBooking")}</span>
+              </div>
+            </div>
+            <div className="proof-item">
+              <span className="proof-icon">⭐</span>
+              <div>
+                <strong>4.9 / 5</strong>
+                <span>{t("patientRating")}</span>
+              </div>
+            </div>
+            <div className="proof-item">
+              <span className="proof-icon">🛡️</span>
+              <div>
+                <strong>NABH & HIPAA</strong>
+                <span>{language === "kn" ? "ಪ್ರಮಾಣೀಕೃತ" : language === "hi" ? "प्रमाणित" : "Accredited"}</span>
+              </div>
+            </div>
+          </div>
 
           {/* "How are you feeling today?" Interactive Emoji Mood & Health Check-in */}
           <div className="emoji-health-check">
@@ -342,61 +398,73 @@ function Home() {
           <Link
             to="/doctors?specialty=Cardiology"
             className="specialty-card"
-            style={{ textDecoration: "none", color: "inherit", display: "block" }}
           >
-            <div>❤️</div>
+            <div className="specialty-icon-bubble cardiology">❤️</div>
             <h3>{t("specialtyCardiology")}</h3>
             <p>{t("specDescCardiology")}</p>
+            <span className="specialty-link-pill">
+              {language === "kn" ? "ಸಮಾಲೋಚಿಸಿ ➔" : language === "hi" ? "परामर्श ➔" : "Consult ➔"}
+            </span>
           </Link>
 
           <Link
             to="/doctors?specialty=Dermatology"
             className="specialty-card"
-            style={{ textDecoration: "none", color: "inherit", display: "block" }}
           >
-            <div>🧴</div>
+            <div className="specialty-icon-bubble dermatology">🧴</div>
             <h3>{t("specialtyDermatology")}</h3>
             <p>{t("specDescDermatology")}</p>
+            <span className="specialty-link-pill">
+              {language === "kn" ? "ಸಮಾಲೋಚಿಸಿ ➔" : language === "hi" ? "परामर्श ➔" : "Consult ➔"}
+            </span>
           </Link>
 
           <Link
             to="/doctors?specialty=Pediatrics"
             className="specialty-card"
-            style={{ textDecoration: "none", color: "inherit", display: "block" }}
           >
-            <div>👶</div>
+            <div className="specialty-icon-bubble pediatrics">👶</div>
             <h3>{t("specialtyPediatrics")}</h3>
             <p>{t("specDescPediatrics")}</p>
+            <span className="specialty-link-pill">
+              {language === "kn" ? "ಸಮಾಲೋಚಿಸಿ ➔" : language === "hi" ? "परामर्श ➔" : "Consult ➔"}
+            </span>
           </Link>
 
           <Link
             to="/doctors?specialty=Dentistry"
             className="specialty-card"
-            style={{ textDecoration: "none", color: "inherit", display: "block" }}
           >
-            <div>🦷</div>
+            <div className="specialty-icon-bubble dentistry">🦷</div>
             <h3>{t("specialtyDentistry")}</h3>
             <p>{t("specDescDentistry")}</p>
+            <span className="specialty-link-pill">
+              {language === "kn" ? "ಸಮಾಲೋಚಿಸಿ ➔" : language === "hi" ? "परामर्श ➔" : "Consult ➔"}
+            </span>
           </Link>
 
           <Link
             to="/doctors?specialty=Neurology"
             className="specialty-card"
-            style={{ textDecoration: "none", color: "inherit", display: "block" }}
           >
-            <div>🧠</div>
+            <div className="specialty-icon-bubble neurology">🧠</div>
             <h3>{t("specialtyNeurology")}</h3>
             <p>{t("specDescNeurology")}</p>
+            <span className="specialty-link-pill">
+              {language === "kn" ? "ಸಮಾಲೋಚಿಸಿ ➔" : language === "hi" ? "परामर्श ➔" : "Consult ➔"}
+            </span>
           </Link>
 
           <Link
             to="/doctors?specialty=Ophthalmology"
             className="specialty-card"
-            style={{ textDecoration: "none", color: "inherit", display: "block" }}
           >
-            <div>👁️</div>
+            <div className="specialty-icon-bubble ophthalmology">👁️</div>
             <h3>{t("specialtyOphthalmology")}</h3>
             <p>{t("specDescOphthalmology")}</p>
+            <span className="specialty-link-pill">
+              {language === "kn" ? "ಸಮಾಲೋಚಿಸಿ ➔" : language === "hi" ? "परामर्श ➔" : "Consult ➔"}
+            </span>
           </Link>
         </div>
       </section>
@@ -411,10 +479,29 @@ function Home() {
         <div className="doctor-grid">
           {featuredDoctors.map((doc) => (
             <div className="doctor-card" key={doc.id}>
-              <div className="doctor-photo">{doc.photo}</div>
+              <div className="doctor-card-top-tag">
+                <span className="doc-verified-badge">
+                  ✓ {language === "kn" ? "ಪರಿಶೀಲಿಸಲಾಗಿದೆ" : language === "hi" ? "सत्यापित" : "Verified Specialist"}
+                </span>
+                <span className="doc-fee-tag">{doc.fee}</span>
+              </div>
+              <div className="doctor-photo-wrapper">
+                <div className="doctor-photo">{doc.photo}</div>
+                <span className="doctor-active-dot" title="Available for consult"></span>
+              </div>
               <h3>{doc.name}</h3>
-              <p>{doc.specialty}</p>
-              <span>⭐ {doc.rating} • {doc.experience}</span>
+              <p className="doctor-card-spec">{doc.specialty}</p>
+              <p className="doctor-card-hosp">🏥 {doc.hospital ? doc.hospital.split("Care")[0].trim() : "MediBook Center"}</p>
+              
+              <div className="doctor-card-meta-row">
+                <span className="rating-chip">⭐ {doc.rating}</span>
+                <span className="exp-chip">{doc.experience}</span>
+              </div>
+
+              <div className="doctor-next-slot">
+                <span>🟢 {language === "kn" ? "ಮುಂದಿನ ಸ್ಲಾಟ್: ಇಂದು ಲಭ್ಯವಿದೆ" : language === "hi" ? "अगला स्लॉट: आज उपलब्ध" : "Next Available: Today"}</span>
+              </div>
+
               <div className="doctor-card-actions">
                 <Link to={`/doctor-profile/${doc.id}`} className="view-btn">
                   {t("viewProfile")}
