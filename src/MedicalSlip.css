@@ -1,0 +1,409 @@
+/* Medical Slip Modal Backdrop */
+.medical-slip-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.medical-slip-modal {
+  background: white;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 780px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  margin: auto;
+  animation: slipPopIn 0.25s ease-out;
+}
+
+@keyframes slipPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Modal Actions Header Bar */
+.modal-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: #f1f8f9;
+  border-bottom: 1.5px solid #dcebee;
+}
+
+.slip-modal-title {
+  font-weight: 700;
+  color: #172b4d;
+  font-size: 15px;
+}
+
+.actions-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #087f8c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.print-btn:hover {
+  background: #066875;
+  transform: translateY(-1px);
+}
+
+.close-btn {
+  background: white;
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  color: #ef4444;
+  border-color: #fca5a5;
+  background: #fef2f2;
+}
+
+/* Printable Paper Slip */
+.slip-paper {
+  padding: 36px 40px;
+  background: white;
+  color: #1e293b;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Header */
+.slip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.slip-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.slip-logo-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: #eaf8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #bce6ea;
+}
+
+.slip-brand h2 {
+  font-size: 22px;
+  color: #087f8c;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.slip-brand p {
+  margin: 2px 0 0;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.slip-ref-box {
+  text-align: right;
+}
+
+.ref-tag {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 1px;
+}
+
+.ref-number {
+  display: block;
+  font-size: 20px;
+  color: #087f8c;
+  font-family: monospace;
+  font-weight: 800;
+  margin: 2px 0;
+}
+
+.issued-date {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.slip-divider {
+  height: 2px;
+  background: linear-gradient(90deg, #087f8c, #2dd4bf, #087f8c);
+  margin: 20px 0 16px;
+  border-radius: 2px;
+}
+
+/* Status Ribbon */
+.slip-status-ribbon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin-bottom: 22px;
+  font-size: 12px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #15803d;
+}
+
+.security-tag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #0369a1;
+}
+
+/* 2-Column Info Grid */
+.slip-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.slip-info-col {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+
+.col-title {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #087f8c;
+  letter-spacing: 0.8px;
+  border-bottom: 1.5px solid #e2e8f0;
+  padding-bottom: 6px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.info-row:last-child {
+  margin-bottom: 0;
+}
+
+.info-row .label {
+  color: #64748b;
+  font-weight: 500;
+}
+
+.info-row .value {
+  color: #1e293b;
+  text-align: right;
+  max-width: 60%;
+}
+
+.info-row .strong-val {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.info-row .text-teal {
+  color: #087f8c;
+  font-weight: 600;
+}
+
+.info-row .fee-highlight {
+  font-weight: 800;
+  color: #087f8c;
+  font-size: 14px;
+}
+
+/* Clinical Purpose Section */
+.slip-clinical-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+
+.reason-content-box p {
+  margin: 0;
+  font-size: 13px;
+  color: #334155;
+  font-style: italic;
+  background: white;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px dashed #cbd5e1;
+}
+
+/* Guidelines */
+.slip-guidelines {
+  margin-bottom: 24px;
+}
+
+.guidelines-list {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 12px;
+  color: #475569;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Footer / Signature */
+.slip-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 16px;
+  border-top: 1.5px dashed #cbd5e1;
+}
+
+.footer-left .help-text {
+  margin: 2px 0;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.footer-right {
+  text-align: center;
+}
+
+.digital-stamp {
+  border: 2px solid #087f8c;
+  border-radius: 6px;
+  padding: 4px 12px;
+  display: inline-block;
+  margin-bottom: 6px;
+  background: #eaf8f8;
+}
+
+.stamp-title {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  color: #087f8c;
+  letter-spacing: 1px;
+}
+
+.stamp-sub {
+  display: block;
+  font-size: 8px;
+  color: #087f8c;
+  font-weight: 600;
+}
+
+.signature-line {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+  border-top: 1px solid #94a3b8;
+  padding-top: 4px;
+}
+
+/* Responsive */
+@media (max-width: 650px) {
+  .slip-paper {
+    padding: 24px 18px;
+  }
+  .slip-header {
+    flex-direction: column;
+  }
+  .slip-ref-box {
+    text-align: left;
+  }
+  .slip-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .slip-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+/* 🖨️ PRINT RULES (Critical for saving clean PDF) */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .medical-slip-overlay,
+  .medical-slip-modal,
+  #printable-medical-slip,
+  #printable-medical-slip * {
+    visibility: visible;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .medical-slip-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+  }
+  .medical-slip-modal {
+    max-width: 100%;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+  }
+  .slip-paper {
+    padding: 20px;
+  }
+}

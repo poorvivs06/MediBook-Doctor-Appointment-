@@ -1,0 +1,259 @@
+.doctors-page {
+  min-height: 100vh;
+  background: #f7fbfc;
+  padding-bottom: 70px;
+}
+
+.doctors-header {
+  text-align: center;
+  padding: 70px 20px 40px;
+  background: #eaf8f8;
+}
+
+.doctors-header p {
+  color: #087f8c;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+.doctors-header h1 {
+  font-size: 42px;
+  margin: 12px 0;
+}
+
+.doctors-header span {
+  color: #657786;
+}
+
+.doctor-search {
+  max-width: 900px;
+  margin: 35px auto 20px;
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+}
+
+.doctor-search input,
+.doctor-search select {
+  flex: 1;
+  padding: 14px;
+  border: 1px solid #dce8e9;
+  border-radius: 7px;
+  outline: none;
+  font-size: 14px;
+  background: #fbfdfd;
+}
+
+.doctor-search input:focus,
+.doctor-search select:focus {
+  border-color: #087f8c;
+  background: #fff;
+}
+
+.doctor-search button {
+  padding: 0 25px;
+  background: #087f8c;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.doctor-search button:hover {
+  background: #066875;
+}
+
+.search-status-bar {
+  max-width: 1100px;
+  margin: 0 auto 25px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #475569;
+}
+
+.reset-inline-btn {
+  background: none;
+  border: none;
+  color: #087f8c;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-size: 13px;
+}
+
+.doctors-list {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 0 20px;
+}
+
+.doctor-box {
+  background: white;
+  padding: 28px;
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid #e2eeee;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.doctor-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(8, 127, 140, 0.08);
+}
+
+.doctor-image {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border-radius: 50%;
+  background: #e5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 55px;
+}
+
+.doctor-box h2 {
+  font-size: 20px;
+  margin-top: 18px;
+  color: #172b4d;
+}
+
+.doctor-box p {
+  color: #718096;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.doctor-box .specialty {
+  color: #087f8c;
+  font-weight: bold;
+}
+
+.doctor-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 18px 0;
+  color: #526273;
+  font-size: 14px;
+  font-weight: 600;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.view-profile-btn {
+  flex: 1;
+  padding: 11px 10px;
+  background: white;
+  border: 1.5px solid #087f8c;
+  color: #087f8c;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  transition: all 0.2s;
+}
+
+.view-profile-btn:hover {
+  background: #eaf8f8;
+}
+
+.book-btn {
+  flex: 1;
+  padding: 11px 10px;
+  background: #087f8c;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  transition: background 0.2s;
+}
+
+.book-btn:hover {
+  background: #066875;
+}
+
+.no-doctors-container {
+  grid-column: 1 / -1;
+  text-align: center;
+  background: white;
+  padding: 50px 30px;
+  border-radius: 16px;
+  border: 1px dashed #cbd5e1;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.no-doctors-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.no-doctors-text {
+  font-size: 15px;
+  color: #64748b;
+  margin-bottom: 22px;
+}
+
+.clear-search-btn {
+  padding: 10px 22px;
+  background: #087f8c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.clear-search-btn:hover {
+  background: #066875;
+}
+
+@media (max-width: 800px) {
+  .doctors-list {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .doctor-search {
+    margin: 25px 20px 15px;
+    flex-direction: column;
+  }
+
+  .doctor-search button {
+    padding: 14px;
+  }
+}

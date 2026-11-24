@@ -1,0 +1,55 @@
+.qr-pass-card {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 16px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  max-width: 240px;
+}
+
+.qr-pass-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 10px;
+}
+
+.qr-pass-badge {
+  font-size: 10px;
+  font-weight: 700;
+  color: #087f8c;
+  letter-spacing: 0.5px;
+}
+
+.qr-pass-ref {
+  font-family: monospace;
+  font-weight: 800;
+  font-size: 14px;
+  color: #0f172a;
+}
+
+.qr-svg-wrapper {
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-pass-instruction {
+  font-size: 11px;
+  color: #64748b;
+  margin: 10px 0 0 0;
+  line-height: 1.4;
+}
+
+.qr-pass-instruction strong {
+  color: #087f8c;
+}

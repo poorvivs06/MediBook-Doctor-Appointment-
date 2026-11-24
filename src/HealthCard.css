@@ -1,0 +1,503 @@
+.health-card-container {
+  max-width: 960px;
+  margin: 0 auto 30px;
+}
+
+.health-card-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.health-card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ecfdf5;
+  color: #047857;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.health-card-top-bar h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+
+.health-card-top-bar p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.health-card-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.card-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-action-btn.edit-btn {
+  background: #f1f5f9;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+}
+
+.card-action-btn.edit-btn:hover {
+  background: #e2e8f0;
+}
+
+.card-action-btn.print-btn {
+  background: #087f8c;
+  color: #ffffff;
+}
+
+.card-action-btn.print-btn:hover {
+  background: #066671;
+}
+
+.card-success-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Visual Health Card Layout */
+.health-card-visual-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.wallet-health-card {
+  width: 100%;
+  max-width: 680px;
+  background: linear-gradient(135deg, #094067 0%, #087f8c 60%, #13a699 100%);
+  color: #ffffff;
+  border-radius: 18px;
+  padding: 24px 28px;
+  box-shadow: 0 16px 36px rgba(8, 127, 140, 0.22), 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.wallet-health-card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+.card-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-logo-icon {
+  background: rgba(255, 255, 255, 0.2);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.card-org-name {
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.card-sub-accred {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+}
+
+.card-chip-hologram {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.sim-chip {
+  width: 38px;
+  height: 28px;
+  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 50%, #d97706 100%);
+  border-radius: 6px;
+  border: 1px solid #b45309;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.secure-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #fef08a;
+}
+
+/* Card Body Layout */
+.card-body-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 115px;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.card-patient-photo-col {
+  text-align: center;
+}
+
+.patient-avatar-box {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+}
+
+.avatar-emoji {
+  font-size: 46px;
+}
+
+.card-member-id {
+  font-size: 11px;
+  font-family: monospace;
+  font-weight: 800;
+  display: block;
+  letter-spacing: 0.5px;
+  color: #e0f2fe;
+}
+
+.card-validity {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+}
+
+.patient-name-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.patient-name-banner h4 {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+.blood-group-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(239, 68, 68, 0.9);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.card-grid-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.meta-box {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.meta-box.full {
+  grid-column: span 2;
+}
+
+.meta-lbl {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.meta-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+}
+
+.meta-val.highlight-phone {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #fef08a;
+}
+
+.meta-val.alert-tag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #fed7aa;
+}
+
+.card-qr-col {
+  text-align: center;
+}
+
+.qr-box-mini {
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.qr-sub-text {
+  font-size: 8.5px;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+  margin-top: 6px;
+  line-height: 1.2;
+}
+
+/* Card Footer */
+.card-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  padding-top: 12px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.emergency-toll-free strong {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+/* Edit Modal */
+.modal-overlay-card {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-card-header h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+.close-modal-btn {
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+}
+
+.card-edit-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.card-edit-form .form-group {
+  margin-bottom: 14px;
+}
+
+.card-edit-form .form-group.full {
+  margin-bottom: 14px;
+}
+
+.card-edit-form label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.card-edit-form input,
+.card-edit-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #1e293b;
+  box-sizing: border-box;
+}
+
+.card-edit-form input:focus,
+.card-edit-form select:focus {
+  outline: none;
+  border-color: #087f8c;
+  box-shadow: 0 0 0 3px rgba(8, 127, 140, 0.15);
+}
+
+.modal-actions-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancel-modal-btn {
+  background: #f1f5f9;
+  color: #475569;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.save-modal-btn {
+  background: #087f8c;
+  color: #ffffff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Print Rules */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-health-card,
+  #printable-health-card * {
+    visibility: visible;
+  }
+  #printable-health-card {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: none !important;
+    border: 1px solid #000000;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-body-row {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .card-qr-col {
+    margin-top: 10px;
+  }
+  .patient-name-banner {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

@@ -1,0 +1,268 @@
+.navbar {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  background: white;
+  border-bottom: 1px solid #e5eeee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 800;
+  color: #087f8c;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.backend-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: #f0f7f7;
+  border: 1px solid #d2e7e7;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: help;
+  user-select: none;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.connected {
+  background-color: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+}
+
+.status-dot.local {
+  background-color: #f59e0b;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+}
+
+.status-label {
+  color: #374151;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #4b5563;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #087f8c;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.guest-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.login-btn,
+.register-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-btn {
+  background: white;
+  border: 1.5px solid #087f8c;
+  color: #087f8c;
+}
+
+.login-btn:hover {
+  background: #f0fdfd;
+}
+
+.register-btn {
+  background: #087f8c;
+  color: white;
+  border: 1.5px solid #087f8c;
+}
+
+.register-btn:hover {
+  background: #066670;
+  border-color: #066670;
+}
+
+.user-profile-menu {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px 5px 6px;
+  background: #f0fdfd;
+  border: 1px solid #bceae8;
+  border-radius: 24px;
+  text-decoration: none;
+  color: #0f172a;
+  transition: all 0.2s ease;
+}
+
+.user-badge:hover {
+  background: #e1f7f6;
+  border-color: #087f8c;
+}
+
+.avatar-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #087f8c;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 600;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logout-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+  background: #fecaca;
+  color: #b91c1c;
+}
+
+/* Multi-Language Switcher */
+.lang-picker-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f8fafc;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin-right: 8px;
+  transition: all 0.2s ease;
+}
+
+.lang-picker-wrapper:hover {
+  border-color: #087f8c;
+  background: #f0fdfd;
+}
+
+.lang-icon {
+  color: #087f8c;
+  flex-shrink: 0;
+}
+
+.lang-select {
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  outline: none;
+  padding-right: 4px;
+}
+
+.lang-select option {
+  background: #ffffff;
+  color: #1f2937;
+  font-size: 13px;
+}
+
+/* Lab Tests Link in Navbar */
+.lab-tests-nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f0fdfa;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 1px solid #99f6e4;
+  color: #0f766e !important;
+  font-weight: 600 !important;
+}
+
+.lab-tests-nav-link:hover {
+  background: #ccfbf1 !important;
+  border-color: #2dd4bf !important;
+}
+
+.lab-badge-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #0d9488;
+  animation: labPulse 1.8s infinite;
+}
+
+@keyframes labPulse {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+@media (max-width: 860px) {
+  .nav-links {
+    display: none;
+  }
+}

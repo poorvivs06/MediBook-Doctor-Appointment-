@@ -1,0 +1,138 @@
+/* ==========================================================================
+   DOCTOR DOLL - PROFESSIONAL HEALTHCARE MASCOT STYLES
+   ========================================================================== */
+
+.doctor-doll-wrapper {
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.doctor-doll-wrapper.interactive:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Floating Bob Animation */
+.doll-figure-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: dollFloat 3.4s ease-in-out infinite alternate;
+}
+
+@keyframes dollFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Waving Hand Animation */
+.doll-arm-waving {
+  transform-origin: 112px 100px;
+  animation: dollWave 2.4s ease-in-out infinite;
+}
+
+@keyframes dollWave {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(12deg);
+  }
+  30% {
+    transform: rotate(-6deg);
+  }
+  45% {
+    transform: rotate(14deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Speech Bubble */
+.doll-speech-bubble {
+  position: relative;
+  background: #ffffff;
+  border: 1.5px solid #087f8c;
+  color: #172b4d;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(8, 127, 140, 0.14);
+  margin-bottom: 8px;
+  text-align: center;
+  line-height: 1.4;
+  white-space: normal;
+  max-width: 200px;
+  animation: speechPop 0.3s ease-out;
+}
+
+@keyframes speechPop {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.doll-speech-bubble strong {
+  color: #087f8c;
+}
+
+.speech-arrow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-right: 1.5px solid #087f8c;
+  border-bottom: 1.5px solid #087f8c;
+}
+
+/* Name Pill Badge */
+.doll-name-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1px solid #dcebee;
+  border-radius: 20px;
+  padding: 4px 12px;
+  box-shadow: 0 2px 8px rgba(8, 127, 140, 0.08);
+  margin-top: 4px;
+}
+
+.doll-name-pill strong {
+  font-size: 12px;
+  color: #087f8c;
+}
+
+.doll-badge-icon {
+  font-size: 13px;
+}
+
+.doll-badge-sub {
+  font-size: 10px;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+}
