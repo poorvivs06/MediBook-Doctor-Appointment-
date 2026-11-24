@@ -58,6 +58,7 @@
   cursor: help;
   user-select: none;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .backend-indicator:hover {
@@ -110,12 +111,13 @@
 .nav-links a {
   text-decoration: none;
   color: #475569;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 600;
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: 8px;
   transition: all 0.18s ease;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
