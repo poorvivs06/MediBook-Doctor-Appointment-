@@ -1,32 +1,52 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import { useLanguage } from "./LanguageContext";
-import { LogOut, Globe } from "lucide-react";
+import {
+  LogOut,
+  Globe,
+  FlaskConical,
+  Activity,
+  Pill,
+  CreditCard,
+  CalendarCheck,
+  Stethoscope,
+  Home,
+  Menu,
+  X,
+} from "lucide-react";
 import "./Navbar.css";
 
 export default function Navbar() {
   const { user, logout, isConfigured } = useAuth();
   const { language, setLanguage, t, languages } = useLanguage();
   const navigate = useNavigate();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLogout = async () => {
     await logout();
+    setMobileMenuOpen(false);
     navigate("/");
   };
+
+  const closeMenu = () => setMobileMenuOpen(false);
 
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <Link to="/" className="logo">
-          <span style={{ fontSize: "22px", marginRight: "4px" }}>🩺</span>
+        <Link to="/" className="logo" onClick={closeMenu}>
+          <span className="logo-icon-badge">🩺</span>
           <span>MediBook</span>
         </Link>
 
-        <div className="backend-indicator" title={
-          isConfigured
-            ? "Supabase cloud database is connected and active"
-            : "Running in local storage fallback mode. Add your Supabase keys in .env to enable cloud features."
-        }>
+        <div
+          className="backend-indicator"
+          title={
+            isConfigured
+              ? "Supabase cloud database is connected and active"
+              : "Running in local storage fallback mode. Add your Supabase keys in .env to enable cloud features."
+          }
+        >
           <span className={`status-dot ${isConfigured ? "connected" : "local"}`}></span>
           <span className="status-label">
             {isConfigured ? "Supabase Live" : "Local Mode"}
@@ -34,22 +54,49 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Desktop Navigation Links — Every portal section is separate & directly accessible */}
       <div className="nav-links">
-        <Link to="/">{t("home")}</Link>
-        <Link to="/doctors">{t("doctors")}</Link>
-        <Link to="/my-appointments">{t("myAppointments")}</Link>
-        <Link to="/lab-tests" className="lab-tests-nav-link">
+        <NavLink to="/" end className={({ isActive }) => `nav-item-link ${isActive ? "active" : ""}`}>
+          <Home size={14} />
+          <span>{t("home")}</span>
+        </NavLink>
+
+        <NavLink to="/doctors" className={({ isActive }) => `nav-item-link ${isActive ? "active" : ""}`}>
+          <Stethoscope size={14} />
+          <span>{t("doctors")}</span>
+        </NavLink>
+
+        <NavLink to="/my-appointments" className={({ isActive }) => `nav-item-link ${isActive ? "active" : ""}`}>
+          <CalendarCheck size={14} />
+          <span>{t("myAppointments")}</span>
+        </NavLink>
+
+        <NavLink to="/lab-tests" className={({ isActive }) => `nav-item-link pill-labs ${isActive ? "active" : ""}`}>
           <span className="lab-badge-pulse"></span>
-          🧪 {t("labTests")}
-        </Link>
-        <a href="/#specializations">{t("specialties")}</a>
-        <a href="/#contact">{t("contact")}</a>
+          <FlaskConical size={14} />
+          <span>{t("labTests")}</span>
+        </NavLink>
+
+        <NavLink to="/vitals" className={({ isActive }) => `nav-item-link pill-vitals ${isActive ? "active" : ""}`}>
+          <Activity size={14} />
+          <span>{t("vitalsNav")}</span>
+        </NavLink>
+
+        <NavLink to="/medicines" className={({ isActive }) => `nav-item-link pill-meds ${isActive ? "active" : ""}`}>
+          <Pill size={14} />
+          <span>{t("medicinesNav")}</span>
+        </NavLink>
+
+        <NavLink to="/health-card" className={({ isActive }) => `nav-item-link pill-card ${isActive ? "active" : ""}`}>
+          <CreditCard size={14} />
+          <span>{t("healthCardNav")}</span>
+        </NavLink>
       </div>
 
       <div className="nav-buttons">
         {/* Multi-Language Selector */}
         <div className="lang-picker-wrapper" title="Change Language">
-          <Globe size={15} className="lang-icon" />
+          <Globe size={14} className="lang-icon" />
           <select
             className="lang-select"
             value={language}
@@ -71,7 +118,7 @@ export default function Navbar() {
                 {user.fullName ? user.fullName[0].toUpperCase() : "U"}
               </div>
               <span className="user-name">
-                👋 {t("hi")}, {user.fullName ? user.fullName.split(" ")[0] : user.email.split("@")[0]}!
+                {t("hi")}, {user.fullName ? user.fullName.split(" ")[0] : user.email.split("@")[0]}
               </span>
             </Link>
             <button
@@ -79,8 +126,8 @@ export default function Navbar() {
               className="logout-button"
               title="Sign out of MediBook"
             >
-              <LogOut size={16} />
-              <span>{t("logout")}</span>
+              <LogOut size={15} />
+              <span className="logout-label">{t("logout")}</span>
             </button>
           </div>
         ) : (
@@ -93,7 +140,44 @@ export default function Navbar() {
             </Link>
           </div>
         )}
+
+        {/* Mobile Hamburger */}
+        <button
+          type="button"
+          className="mobile-menu-toggle"
+          onClick={() => setMobileMenuOpen((prev) => !prev)}
+          aria-label="Toggle Menu"
+        >
+          {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
+
+      {/* Mobile Dropdown Drawer */}
+      {mobileMenuOpen && (
+        <div className="mobile-nav-drawer">
+          <NavLink to="/" end onClick={closeMenu} className="mobile-nav-item">
+            <Home size={16} /> <span>{t("home")}</span>
+          </NavLink>
+          <NavLink to="/doctors" onClick={closeMenu} className="mobile-nav-item">
+            <Stethoscope size={16} /> <span>{t("doctors")}</span>
+          </NavLink>
+          <NavLink to="/my-appointments" onClick={closeMenu} className="mobile-nav-item">
+            <CalendarCheck size={16} /> <span>{t("myAppointments")}</span>
+          </NavLink>
+          <NavLink to="/lab-tests" onClick={closeMenu} className="mobile-nav-item">
+            <FlaskConical size={16} /> <span>{t("labTests")}</span>
+          </NavLink>
+          <NavLink to="/vitals" onClick={closeMenu} className="mobile-nav-item">
+            <Activity size={16} /> <span>{t("vitalsNav")}</span>
+          </NavLink>
+          <NavLink to="/medicines" onClick={closeMenu} className="mobile-nav-item">
+            <Pill size={16} /> <span>{t("medicinesNav")}</span>
+          </NavLink>
+          <NavLink to="/health-card" onClick={closeMenu} className="mobile-nav-item">
+            <CreditCard size={16} /> <span>{t("healthCardNav")}</span>
+          </NavLink>
+        </div>
+      )}
     </nav>
   );
 }

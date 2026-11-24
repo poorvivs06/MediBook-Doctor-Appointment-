@@ -203,7 +203,7 @@ export default function VitalsTracker() {
       {/* Latest Vitals Metric Cards Grid */}
       <div className="vitals-metric-grid">
         {/* 1. Blood Pressure Card */}
-        <div className="vital-card">
+        <div className="vital-card bp-card">
           <div className="vital-card-top">
             <div className="vital-icon bp">
               <Activity size={20} />
@@ -217,13 +217,16 @@ export default function VitalsTracker() {
             <strong>{latest.bpSystolic} / {latest.bpDiastolic}</strong>
             <span className="vital-unit">mmHg</span>
           </div>
+          <div className="vital-gauge-track">
+            <div className="vital-gauge-fill bp" style={{ width: `${Math.min(100, Math.round((Number(latest.bpSystolic) / 160) * 100))}%` }}></div>
+          </div>
           <div className="vital-guide-text">
             <span>Standard Target: &lt; 120/80 mmHg</span>
           </div>
         </div>
 
         {/* 2. Blood Sugar / Glucose Card */}
-        <div className="vital-card">
+        <div className="vital-card sugar-card">
           <div className="vital-card-top">
             <div className="vital-icon sugar">
               <Droplet size={20} />
@@ -237,13 +240,16 @@ export default function VitalsTracker() {
             <strong>{latest.bloodSugar}</strong>
             <span className="vital-unit">mg/dL</span>
           </div>
+          <div className="vital-gauge-track">
+            <div className="vital-gauge-fill sugar" style={{ width: `${Math.min(100, Math.round((Number(latest.bloodSugar) / 180) * 100))}%` }}></div>
+          </div>
           <div className="vital-guide-text">
             <span>{latest.sugarType} (Target: &lt; 100 Fasting)</span>
           </div>
         </div>
 
         {/* 3. Heart Rate / Pulse Card */}
-        <div className="vital-card">
+        <div className="vital-card heart-card">
           <div className="vital-card-top">
             <div className="vital-icon heart">
               <Heart size={20} />
@@ -257,13 +263,16 @@ export default function VitalsTracker() {
             <strong>{latest.pulse}</strong>
             <span className="vital-unit">bpm</span>
           </div>
+          <div className="vital-gauge-track">
+            <div className="vital-gauge-fill heart" style={{ width: `${Math.min(100, Math.round((Number(latest.pulse) / 120) * 100))}%` }}></div>
+          </div>
           <div className="vital-guide-text">
             <span>Resting Target: 60 - 100 bpm</span>
           </div>
         </div>
 
         {/* 4. Oxygen Saturation (SpO2) Card */}
-        <div className="vital-card">
+        <div className="vital-card spo2-card">
           <div className="vital-card-top">
             <div className="vital-icon spo2">
               <Wind size={20} />
@@ -277,13 +286,16 @@ export default function VitalsTracker() {
             <strong>{latest.spo2}%</strong>
             <span className="vital-unit">SpO2</span>
           </div>
+          <div className="vital-gauge-track">
+            <div className="vital-gauge-fill spo2" style={{ width: `${Math.min(100, Number(latest.spo2))}%` }}></div>
+          </div>
           <div className="vital-guide-text">
             <span>Optimal Range: 95% - 100%</span>
           </div>
         </div>
 
         {/* 5. Body Weight Card */}
-        <div className="vital-card">
+        <div className="vital-card weight-card">
           <div className="vital-card-top">
             <div className="vital-icon weight">
               <Scale size={20} />
@@ -297,8 +309,11 @@ export default function VitalsTracker() {
             <strong>{latest.weight}</strong>
             <span className="vital-unit">kg</span>
           </div>
+          <div className="vital-gauge-track">
+            <div className="vital-gauge-fill weight" style={{ width: `${Math.min(100, Math.round((Number(latest.weight) / 110) * 100))}%` }}></div>
+          </div>
           <div className="vital-guide-text">
-            <span>Est. BMI: ~22.4 (Healthy Index)</span>
+            <span>Est. BMI: ~{(Number(latest.weight) / (1.72 * 1.72)).toFixed(1)} (Healthy Index)</span>
           </div>
         </div>
       </div>

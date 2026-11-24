@@ -1,6 +1,10 @@
+/* ==========================================================================
+   DAILY VITALS & BIOMARKERS — MODERN CLINICAL TELEMETRY UI
+   ========================================================================== */
+
 .vitals-tracker-container {
-  max-width: 960px;
-  margin: 0 auto 30px;
+  max-width: 1120px;
+  margin: 0 auto 40px;
 }
 
 .vitals-header-bar {
@@ -8,155 +12,159 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  gap: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+  border: 1px solid #bfdbfe;
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 26px;
+  box-shadow: 0 10px 30px -8px rgba(2, 132, 199, 0.08);
 }
 
 .vitals-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: #f0fdfa;
-  color: #0d9488;
-  font-size: 11px;
-  font-weight: 700;
+  gap: 7px;
+  background: #dbeafe;
+  color: #0369a1;
+  font-size: 11.5px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  margin-bottom: 8px;
+  letter-spacing: 0.6px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  margin-bottom: 10px;
 }
 
 .vitals-header-bar h2 {
-  font-size: 22px;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 28px;
   font-weight: 800;
   color: #0f172a;
-  margin: 0 0 4px;
+  margin: 0 0 6px;
 }
 
 .vitals-header-bar p {
-  font-size: 13px;
-  color: #64748b;
+  font-size: 14px;
+  color: #475569;
   margin: 0;
+  max-width: 620px;
 }
 
 .log-vitals-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: #087f8c;
+  gap: 8px;
+  background: linear-gradient(135deg, #0284c7 0%, #087f8c 100%);
   color: #ffffff;
   border: none;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
-  padding: 10px 18px;
-  border-radius: 8px;
+  padding: 13px 22px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.25);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .log-vitals-btn:hover {
-  background: #066671;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.35);
 }
 
 .vitals-success-banner {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   background: #ecfdf5;
   color: #065f46;
   border: 1px solid #a7f3d0;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 13px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 13.5px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 }
 
 /* Latest Metrics Grid */
 .vitals-metric-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
   margin-bottom: 28px;
 }
 
 .vital-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 18px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 6px 18px -4px rgba(15, 23, 42, 0.05);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+.vital-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.vital-card.bp-card::before { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+.vital-card.sugar-card::before { background: linear-gradient(90deg, #d97706, #fbbf24); }
+.vital-card.heart-card::before { background: linear-gradient(90deg, #dc2626, #f87171); }
+.vital-card.spo2-card::before { background: linear-gradient(90deg, #059669, #34d399); }
+.vital-card.weight-card::before { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
+
 .vital-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px -6px rgba(15, 23, 42, 0.09);
 }
 
 .vital-card-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .vital-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.vital-icon.bp {
-  background: #e0f2fe;
-  color: #0284c7;
-}
-
-.vital-icon.sugar {
-  background: #fef3c7;
-  color: #d97706;
-}
-
-.vital-icon.heart {
-  background: #fee2e2;
-  color: #dc2626;
-}
-
-.vital-icon.spo2 {
-  background: #ecfdf5;
-  color: #059669;
-}
-
-.vital-icon.weight {
-  background: #f3e8ff;
-  color: #9333ea;
-}
+.vital-icon.bp { background: #e0f2fe; color: #0284c7; }
+.vital-icon.sugar { background: #fef3c7; color: #d97706; }
+.vital-icon.heart { background: #fee2e2; color: #dc2626; }
+.vital-icon.spo2 { background: #ecfdf5; color: #059669; }
+.vital-icon.weight { background: #f3e8ff; color: #7c3aed; }
 
 .vital-status-pill {
   font-size: 11px;
   font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 12px;
+  padding: 4px 10px;
+  border-radius: 9999px;
 }
 
 .vital-status-pill.optimal,
 .vital-status-pill.normal {
   background: #ecfdf5;
-  color: #059669;
+  color: #047857;
+  border: 1px solid #a7f3d0;
 }
 
 .vital-status-pill.attention {
   background: #fff7ed;
   color: #ea580c;
+  border: 1px solid #fed7aa;
 }
 
 .vital-title {
@@ -166,65 +174,89 @@
   display: block;
   margin-bottom: 6px;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
 }
 
 .vital-value-row {
   display: flex;
   align-items: baseline;
   gap: 6px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .vital-value-row strong {
-  font-size: 24px;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 28px;
   font-weight: 800;
   color: #0f172a;
 }
 
 .vital-unit {
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 12.5px;
+  font-weight: 700;
   color: #94a3b8;
 }
 
+/* Visual Range Gauge Bar */
+.vital-gauge-track {
+  width: 100%;
+  height: 6px;
+  background: #f1f5f9;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.vital-gauge-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.5s ease;
+}
+
+.vital-gauge-fill.bp { background: linear-gradient(90deg, #38bdf8, #0284c7); }
+.vital-gauge-fill.sugar { background: linear-gradient(90deg, #fbbf24, #d97706); }
+.vital-gauge-fill.heart { background: linear-gradient(90deg, #f87171, #dc2626); }
+.vital-gauge-fill.spo2 { background: linear-gradient(90deg, #34d399, #059669); }
+.vital-gauge-fill.weight { background: linear-gradient(90deg, #a78bfa, #7c3aed); }
+
 .vital-guide-text {
-  font-size: 11px;
-  color: #94a3b8;
-  border-top: 1px dashed #e2e8f0;
-  padding-top: 8px;
+  font-size: 11.5px;
+  color: #64748b;
+  font-weight: 500;
 }
 
 /* History Log Card */
 .vitals-history-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 20px 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border-radius: 18px;
+  padding: 24px 28px;
+  box-shadow: 0 6px 20px -4px rgba(15, 23, 42, 0.05);
 }
 
 .vitals-history-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .vitals-history-header h3 {
-  font-size: 17px;
+  font-family: var(--font-heading, 'Outfit', sans-serif);
+  font-size: 19px;
   font-weight: 800;
   color: #0f172a;
   margin: 0;
 }
 
 .total-logs-tag {
-  background: #f1f5f9;
-  color: #475569;
+  background: #eff6ff;
+  color: #0284c7;
+  border: 1px solid #bfdbfe;
   font-size: 12px;
   font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 12px;
+  padding: 5px 12px;
+  border-radius: 9999px;
 }
 
 .vitals-table-wrapper {
@@ -234,7 +266,7 @@
 .vitals-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 13.5px;
 }
 
 .vitals-table th {
@@ -242,13 +274,16 @@
   color: #475569;
   font-weight: 700;
   text-align: left;
-  padding: 10px 14px;
+  padding: 12px 14px;
   border-bottom: 2px solid #e2e8f0;
   white-space: nowrap;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
 .vitals-table td {
-  padding: 12px 14px;
+  padding: 14px;
   border-bottom: 1px solid #f1f5f9;
   color: #334155;
   vertical-align: middle;
@@ -264,7 +299,7 @@
 }
 
 .time-col span {
-  font-size: 11px;
+  font-size: 11.5px;
   color: #94a3b8;
 }
 
@@ -275,12 +310,12 @@
 }
 
 .micro-status {
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 700;
   display: inline-block;
-  padding: 1px 6px;
-  border-radius: 8px;
-  margin-top: 2px;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  margin-top: 3px;
 }
 
 .micro-status.optimal,
@@ -295,29 +330,29 @@
 }
 
 .sugar-badge {
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 600;
-  color: #64748b;
+  color: #475569;
   background: #f1f5f9;
-  padding: 2px 6px;
+  padding: 2px 7px;
   border-radius: 6px;
   display: inline-block;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .notes-col {
-  max-width: 200px;
-  font-size: 12px;
+  max-width: 220px;
+  font-size: 12.5px;
   color: #64748b;
 }
 
 .delete-vital-btn {
-  background: #fee2e2;
+  background: #fef2f2;
   color: #dc2626;
-  border: none;
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
+  border: 1px solid #fee2e2;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -358,8 +393,8 @@
   width: 100%;
   padding: 10px 12px;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 13px;
+  border-radius: 9px;
+  font-size: 13.5px;
   color: #1e293b;
   box-sizing: border-box;
 }
@@ -367,6 +402,6 @@
 .vitals-form input:focus,
 .vitals-form select:focus {
   outline: none;
-  border-color: #087f8c;
-  box-shadow: 0 0 0 3px rgba(8, 127, 140, 0.15);
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
 }

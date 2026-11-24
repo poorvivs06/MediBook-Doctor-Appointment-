@@ -207,6 +207,33 @@ export default function HealthCard() {
         </div>
       </div>
 
+      {/* Emergency Readiness & Hospital Benefits Strip */}
+      <div className="health-card-benefits-grid no-print">
+        <div className="hc-benefit-card">
+          <div className="hc-benefit-icon teal">⚡</div>
+          <div>
+            <h4>Fast-Track Triage QR</h4>
+            <p>Present this QR pass at any MediBook reception desk for priority check-in under 15 seconds.</p>
+          </div>
+        </div>
+
+        <div className="hc-benefit-card">
+          <div className="hc-benefit-icon rose">🩸</div>
+          <div>
+            <h4>Critical Blood &amp; Allergy Alert</h4>
+            <p>Ensures emergency paramedics immediately see your blood group, drug allergies, and ICE contact.</p>
+          </div>
+        </div>
+
+        <div className="hc-benefit-card">
+          <div className="hc-benefit-icon indigo">🛡️</div>
+          <div>
+            <h4>NABH &amp; Offline Print Ready</h4>
+            <p>Download or print your encrypted Health Card PDF to keep in your physical wallet anytime.</p>
+          </div>
+        </div>
+      </div>
+
       {/* Edit Health Card Modal */}
       {isEditing && (
         <div className="modal-overlay-card" onClick={() => setIsEditing(false)}>

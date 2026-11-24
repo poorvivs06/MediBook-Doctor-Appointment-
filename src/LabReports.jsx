@@ -205,6 +205,7 @@ export default function LabReports() {
   const { language, t } = useLanguage();
   const [reports] = useState(DEFAULT_LAB_REPORTS);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
   const [activeReport, setActiveReport] = useState(null);
   const [showBookModal, setShowBookModal] = useState(false);
   const [bookSuccessMsg, setBookSuccessMsg] = useState("");
@@ -247,7 +248,17 @@ export default function LabReports() {
 
   const filteredReports = reports
     .filter((r) => (selectedCategory === "All" ? true : r.category === selectedCategory))
-    .map(getReportDetails);
+    .map(getReportDetails)
+    .filter((r) => {
+      const q = searchTerm.trim().toLowerCase();
+      if (!q) return true;
+      return (
+        r.testName.toLowerCase().includes(q) ||
+        r.id.toLowerCase().includes(q) ||
+        r.prescribedBy.toLowerCase().includes(q) ||
+        r.categoryDisplay.toLowerCase().includes(q)
+      );
+    });
 
   const handleBookSubmit = (e) => {
     e.preventDefault();
@@ -316,24 +327,36 @@ export default function LabReports() {
         </div>
       </div>
 
-      {/* Category Pills */}
-      <div className="lab-category-pills">
-        {categories.map((cat) => (
-          <button
-            key={cat.key}
-            type="button"
-            onClick={() => setSelectedCategory(cat.key)}
-            className={`cat-pill ${selectedCategory === cat.key ? "active" : ""}`}
-          >
-            {t(cat.labelKey)} {cat.key === "All" ? `(${reports.length})` : ""}
-          </button>
-        ))}
+      {/* Filter Toolbar: Search + Category Pills */}
+      <div className="lab-filter-toolbar">
+        <div className="lab-search-box">
+          <Search size={16} className="lab-search-icon" />
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search lab tests, ID (e.g., LAB-8491), or doctor..."
+          />
+        </div>
+
+        <div className="lab-category-pills">
+          {categories.map((cat) => (
+            <button
+              key={cat.key}
+              type="button"
+              onClick={() => setSelectedCategory(cat.key)}
+              className={`cat-pill ${selectedCategory === cat.key ? "active" : ""}`}
+            >
+              {t(cat.labelKey)} {cat.key === "All" ? `(${reports.length})` : ""}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Report Cards Grid */}
       <div className="reports-grid">
         {filteredReports.map((report) => (
-          <div key={report.id} className="report-card">
+          <div key={report.id} className={`report-card status-border-${report.status.toLowerCase()}`}>
             <div className="report-card-top">
               <div className="report-card-meta">
                 <span className="ref-tag">{report.id}</span>

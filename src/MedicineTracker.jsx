@@ -39,6 +39,7 @@ const DEFAULT_MEDICINES = [
 export default function MedicineTracker() {
   const { language, t } = useLanguage();
   const [medicines, setMedicines] = useState([]);
+  const [timingFilter, setTimingFilter] = useState("all");
   const [showAddModal, setShowAddModal] = useState(false);
   const [newMed, setNewMed] = useState({
     name: "",
@@ -106,6 +107,7 @@ export default function MedicineTracker() {
 
   const takenCount = medicines.filter((m) => m.taken).length;
   const progressPercent = medicines.length > 0 ? Math.round((takenCount / medicines.length) * 100) : 0;
+  const visibleMeds = timingFilter === "all" ? medicines : medicines.filter((m) => m.timing === timingFilter);
 
   return (
     <div className="medicine-tracker-container">
@@ -133,20 +135,39 @@ export default function MedicineTracker() {
       {/* Daily Compliance Progress Card */}
       <div className="compliance-card">
         <div className="compliance-text">
-          <strong>{t("dailyAdherence")}:</strong>
-          <span>{takenCount} of {medicines.length} {t("taken").toLowerCase()} ({progressPercent}%)</span>
+          <div className="compliance-left">
+            <strong>{t("dailyAdherence")}</strong>
+            <span className="compliance-sub">{takenCount} of {medicines.length} {t("taken").toLowerCase()}</span>
+          </div>
+          <span className="compliance-pct-pill">{progressPercent}% Completed</span>
         </div>
         <div className="progress-track">
           <div className="progress-fill" style={{ width: `${progressPercent}%` }}></div>
         </div>
       </div>
 
+      {/* Time-of-Day Filter Pills */}
+      <div className="med-timing-filters">
+        <button type="button" onClick={() => setTimingFilter("all")} className={`med-filter-pill ${timingFilter === "all" ? "active" : ""}`}>
+          All Schedule ({medicines.length})
+        </button>
+        <button type="button" onClick={() => setTimingFilter("morning")} className={`med-filter-pill ${timingFilter === "morning" ? "active" : ""}`}>
+          <Sun size={13} /> {t("morning")}
+        </button>
+        <button type="button" onClick={() => setTimingFilter("afternoon")} className={`med-filter-pill ${timingFilter === "afternoon" ? "active" : ""}`}>
+          <Sunset size={13} /> {t("afternoon")}
+        </button>
+        <button type="button" onClick={() => setTimingFilter("night")} className={`med-filter-pill ${timingFilter === "night" ? "active" : ""}`}>
+          <Moon size={13} /> {t("night")}
+        </button>
+      </div>
+
       {/* Medicine Cards Grid */}
       <div className="medicines-grid">
-        {medicines.map((med) => (
+        {visibleMeds.map((med) => (
           <div key={med.id} className={`med-card ${med.taken ? "completed" : ""}`}>
             <div className="med-card-top">
-              <div className="med-timing-badge">
+              <div className={`med-timing-badge timing-${med.timing}`}>
                 {med.timing === "morning" && <><Sun size={13} /> {t("morning")}</>}
                 {med.timing === "afternoon" && <><Sunset size={13} /> {t("afternoon")}</>}
                 {med.timing === "night" && <><Moon size={13} /> {t("night")}</>}

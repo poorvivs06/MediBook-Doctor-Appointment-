@@ -12,6 +12,7 @@ import DoctorDoll from "./DoctorDoll";
 import LabReports from "./LabReports";
 import HealthCard from "./HealthCard";
 import VitalsTracker from "./VitalsTracker";
+import MedicineTracker from "./MedicineTracker";
 import { doctors as defaultDoctors, getDoctorById, getLocalizedDoctor } from "./doctorsData";
 import { AuthProvider, useAuth } from "./AuthContext";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
@@ -617,9 +618,9 @@ function App() {
             <Route
               path="/lab-tests"
               element={
-                <div className="app">
+                <div className="standalone-portal-page labs-theme">
                   <Navbar />
-                  <main style={{ padding: "30px 7% 70px" }}>
+                  <main className="standalone-portal-main">
                     <LabReports />
                   </main>
                 </div>
@@ -630,9 +631,9 @@ function App() {
             <Route
               path="/health-card"
               element={
-                <div className="app">
+                <div className="standalone-portal-page healthcard-theme">
                   <Navbar />
-                  <main style={{ padding: "30px 7% 70px" }}>
+                  <main className="standalone-portal-main">
                     <HealthCard />
                   </main>
                 </div>
@@ -643,10 +644,23 @@ function App() {
             <Route
               path="/vitals"
               element={
-                <div className="app">
+                <div className="standalone-portal-page vitals-theme">
                   <Navbar />
-                  <main style={{ padding: "30px 7% 70px" }}>
+                  <main className="standalone-portal-main">
                     <VitalsTracker />
+                  </main>
+                </div>
+              }
+            />
+
+            {/* Digital Medicine Cabinet & Pill Reminders */}
+            <Route
+              path="/medicines"
+              element={
+                <div className="standalone-portal-page medicines-theme">
+                  <Navbar />
+                  <main className="standalone-portal-main">
+                    <MedicineTracker />
                   </main>
                 </div>
               }

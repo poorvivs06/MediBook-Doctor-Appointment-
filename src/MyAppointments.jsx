@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 import { useLanguage } from "./LanguageContext";
 import { getDoctorById } from "./doctorsData";
@@ -9,10 +9,6 @@ import MedicalSlipModal from "./MedicalSlipModal";
 import QRCodePass from "./QRCodePass";
 import TelehealthRoom from "./TelehealthRoom";
 import DoctorReviewModal from "./DoctorReviewModal";
-import MedicineTracker from "./MedicineTracker";
-import LabReports from "./LabReports";
-import HealthCard from "./HealthCard";
-import VitalsTracker from "./VitalsTracker";
 import {
   Calendar,
   Clock,
@@ -72,11 +68,20 @@ export default function MyAppointments() {
   const { user } = useAuth();
   const { language, t } = useLanguage();
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filterEmail, setFilterEmail] = useState(user?.email || "");
   const [actionMsg, setActionMsg] = useState("");
-  const [activeTab, setActiveTab] = useState(() => searchParams.get("tab") || "appointments"); // "appointments" | "healthcard" | "vitals" | "medicines" | "lab"
+
+  // Redirect legacy ?tab= deep links to their dedicated separate pages
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab === "lab") navigate("/lab-tests", { replace: true });
+    else if (tab === "vitals") navigate("/vitals", { replace: true });
+    else if (tab === "healthcard") navigate("/health-card", { replace: true });
+    else if (tab === "medicines") navigate("/medicines", { replace: true });
+  }, [searchParams, navigate]);
 
   // Active modals
   const [activeSlipAppointment, setActiveSlipAppointment] = useState(null);
@@ -161,52 +166,43 @@ export default function MyAppointments() {
           </Link>
         </header>
 
-        {/* Portal Feature Tab Switcher */}
-        <div className="portal-tab-bar">
-          <button
-            type="button"
-            className={`portal-tab ${activeTab === "appointments" ? "active" : ""}`}
-            onClick={() => setActiveTab("appointments")}
-          >
-            <Calendar size={16} />
-            <span>{t("myConsultations")} ({appointments.length})</span>
-          </button>
+        {/* Dedicated Portals Quick-Navigation Strip */}
+        <div className="separate-portals-strip">
+          <Link to="/lab-tests" className="portal-jump-card labs">
+            <div className="jump-icon labs"><FlaskConical size={18} /></div>
+            <div className="jump-meta">
+              <strong>{t("labTests")}</strong>
+              <span>NABL Pathology Reports</span>
+            </div>
+            <ArrowRight size={15} className="jump-arrow" />
+          </Link>
 
-          <button
-            type="button"
-            className={`portal-tab ${activeTab === "healthcard" ? "active" : ""}`}
-            onClick={() => setActiveTab("healthcard")}
-          >
-            <CreditCard size={16} />
-            <span>{t("healthCardTab")}</span>
-          </button>
+          <Link to="/vitals" className="portal-jump-card vitals">
+            <div className="jump-icon vitals"><Activity size={18} /></div>
+            <div className="jump-meta">
+              <strong>{t("vitalsNav")}</strong>
+              <span>BP, Glucose &amp; SpO2</span>
+            </div>
+            <ArrowRight size={15} className="jump-arrow" />
+          </Link>
 
-          <button
-            type="button"
-            className={`portal-tab ${activeTab === "vitals" ? "active" : ""}`}
-            onClick={() => setActiveTab("vitals")}
-          >
-            <Activity size={16} />
-            <span>{t("vitalsTrackerTab")}</span>
-          </button>
+          <Link to="/medicines" className="portal-jump-card meds">
+            <div className="jump-icon meds"><Pill size={18} /></div>
+            <div className="jump-meta">
+              <strong>{t("medicinesNav")}</strong>
+              <span>Daily Pill Reminders</span>
+            </div>
+            <ArrowRight size={15} className="jump-arrow" />
+          </Link>
 
-          <button
-            type="button"
-            className={`portal-tab ${activeTab === "medicines" ? "active" : ""}`}
-            onClick={() => setActiveTab("medicines")}
-          >
-            <Pill size={16} />
-            <span>{t("digitalMedicineCabinet")}</span>
-          </button>
-
-          <button
-            type="button"
-            className={`portal-tab ${activeTab === "lab" ? "active" : ""}`}
-            onClick={() => setActiveTab("lab")}
-          >
-            <FlaskConical size={16} />
-            <span>{t("diagnosticLabReportsTab")}</span>
-          </button>
+          <Link to="/health-card" className="portal-jump-card card">
+            <div className="jump-icon card"><CreditCard size={18} /></div>
+            <div className="jump-meta">
+              <strong>{t("healthCardNav")}</strong>
+              <span>Digital Medical Pass</span>
+            </div>
+            <ArrowRight size={15} className="jump-arrow" />
+          </Link>
         </div>
 
         {actionMsg && (
@@ -216,21 +212,8 @@ export default function MyAppointments() {
           </div>
         )}
 
-        {/* Tab 5: Digital Health Card & Emergency Pass */}
-        {activeTab === "healthcard" && <HealthCard />}
-
-        {/* Tab 4: Daily Vitals Tracker */}
-        {activeTab === "vitals" && <VitalsTracker />}
-
-        {/* Tab 3: Diagnostic Lab Reports */}
-        {activeTab === "lab" && <LabReports />}
-
-        {/* Tab 2: Medicine Cabinet */}
-        {activeTab === "medicines" && <MedicineTracker />}
-
-        {/* Tab 1: Scheduled Consultations */}
-        {activeTab === "appointments" && (
-          <>
+        {/* Scheduled Consultations */}
+        <>
             {!user && (
               <div className="guest-lookup-card">
                 <div className="guest-lookup-header">
@@ -553,8 +536,7 @@ export default function MyAppointments() {
                 })}
               </div>
             )}
-          </>
-        )}
+        </>
       </main>
 
       {/* Official Downloadable/Printable Medical Slip Modal */}
