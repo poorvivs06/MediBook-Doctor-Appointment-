@@ -1,8 +1,8 @@
 /* Floating Launcher Button */
 .symptom-checker-launcher {
   position: fixed;
-  bottom: 26px;
-  right: 26px;
+  bottom: 20px;
+  right: 20px;
   background: linear-gradient(135deg, #087f8c 0%, #066875 100%);
   color: white;
   border: none;
